@@ -78,7 +78,7 @@ const PasswordInput = ({ value, onChange, onFocus, onBlur, submitted, error }: P
                 }}
             />
 
-            <Box mt={1}>
+            <Box p={3}>
                 <StyledTypography isValid={isValidLength} submitted={submitted} isTyping={isTyping} variant="body2">
                     Has at least 8 characters (no spaces)
                 </StyledTypography>

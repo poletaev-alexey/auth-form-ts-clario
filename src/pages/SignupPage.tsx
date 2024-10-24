@@ -28,6 +28,9 @@ const StyledTypography = styled(Typography)({
 
 const StyledButton = styled(Button)({
     marginTop: '24px',
+    width: '70%',
+    margin: 'auto',
+    display: 'flex',
     padding: '12px 0',
     borderRadius: '50px',
     background: 'linear-gradient(90deg, #43B6FB 0%, #3A8BFE 100%)',
@@ -90,8 +93,7 @@ export default function SignupPage() {
                         (password.length < 8 || !/[A-Z]/.test(password) || !/\d/.test(password))
                     }
                 />
-
-                <StyledButton type="submit" variant="contained" color="primary" fullWidth>
+                <StyledButton type="submit" variant="contained" color="primary">
                     Sign up
                 </StyledButton>
             </StyledForm>

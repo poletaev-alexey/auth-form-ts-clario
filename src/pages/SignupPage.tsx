@@ -17,19 +17,23 @@ const StyledBox = styled(Box)({
 
 const StyledForm = styled('form')({
     width: '320px',
+    gap: '20px',
+    display: 'flex',
+    flexDirection: 'column',
+
 });
 
 const StyledTypography = styled(Typography)({
-    marginBottom: '24px',
     fontWeight: 'bold',
     textAlign: 'center',
     color: '#333',
+    fontSize: '28px'
 });
 
 const StyledButton = styled(Button)({
-    marginTop: '24px',
     width: '70%',
     margin: 'auto',
+    marginBottom: 0,
     display: 'flex',
     padding: '12px 0',
     borderRadius: '50px',
@@ -55,7 +59,10 @@ export default function SignupPage() {
 
         const emailIsValid = /\S+@\S+\.\S+/.test(email);
         const passwordIsValid =
-            password.length >= 8 && /[A-Z]/.test(password) && /\d/.test(password);
+            password.length >= 8 &&
+            /[A-Z]/.test(password) &&
+            /\d/.test(password) &&
+            !password.includes(' ');
 
         if (!emailIsValid || !passwordIsValid) {
             console.log('Form validation failed');
@@ -76,7 +83,6 @@ export default function SignupPage() {
 
                 <EmailInput
                     value={email}
-                    onFocus={() => setSubmitted(false)}
                     onBlur={() => { }}
                     onChange={setEmail}
                     error={submitted && !/\S+@\S+\.\S+/.test(email)}
@@ -85,12 +91,14 @@ export default function SignupPage() {
                 <PasswordInput
                     value={password}
                     onChange={setPassword}
-                    onFocus={() => setSubmitted(false)}
                     onBlur={() => { }}
                     submitted={submitted}
                     error={
                         submitted &&
-                        (password.length < 8 || !/[A-Z]/.test(password) || !/\d/.test(password))
+                        (password.length < 8 ||
+                            !/[A-Z]/.test(password) ||
+                            !/\d/.test(password) ||
+                            password.includes(' '))
                     }
                 />
                 <StyledButton type="submit" variant="contained" color="primary">
